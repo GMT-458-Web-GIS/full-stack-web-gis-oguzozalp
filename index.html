@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoGame - World Tour</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+
+    <div id="menu-screen">
+        <h1 class="game-title">GeoPath Quiz</h1>
+        
+        <div class="level-zone zone-space">
+            <div class="star star-1"></div><div class="star star-2"></div>
+            <button class="level-btn locked" id="btn-lvl4" onclick="startGame(4)">4</button>
+            <span class="zone-label">UZAY</span>
+        </div>
+
+        <div class="level-zone zone-sky">
+            <div class="cloud cloud-1"></div>
+            <div class="path-line"></div>
+            <button class="level-btn locked" id="btn-lvl3" onclick="startGame(3)">3</button>
+            <span class="zone-label">ATMOSFER</span>
+        </div>
+
+        <div class="level-zone zone-sea">
+            <div class="fish"></div>
+            <div class="path-line"></div>
+            <button class="level-btn locked" id="btn-lvl2" onclick="startGame(2)">2</button>
+            <span class="zone-label">OKYANUS</span>
+        </div>
+
+        <div class="level-zone zone-forest">
+            <div class="tree"></div>
+            <div class="path-line"></div>
+            <button class="level-btn" id="btn-lvl1" onclick="startGame(1)">1</button>
+            <span class="zone-label">YERYÜZÜ</span>
+        </div>
+    </div>
+
+    <div id="game-screen" style="display:none;">
+        <div id="map"></div>
+        
+        <div id="ui-overlay">
+            <div id="timer">Süre: 60</div>
+            
+            <div id="question-box">
+                <img id="question-image" src="" alt="Soru Görseli" style="display:none;">
+                
+                <h2 id="question-text">Soru yükleniyor...</h2>
+                <div id="options-container">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="level-end-screen" style="display:none;">
+        <div class="modal-content">
+            <h2 id="end-title">Tebrikler!</h2>
+            <p id="end-message">Level tamamlandı.</p>
+            <button class="menu-return-btn" onclick="returnToMenu()">Menüye Dön</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

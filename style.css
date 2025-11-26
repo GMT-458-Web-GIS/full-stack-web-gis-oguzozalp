@@ -1,0 +1,172 @@
+body, html { margin: 0; padding: 0; height: 100%; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
+
+/* --- MENÜ TASARIMI --- */
+#menu-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.game-title {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px rgba(0,0,0,0.8);
+    z-index: 10;
+    margin: 0;
+    pointer-events: none;
+}
+
+/* Katmanlar (Zones) */
+.level-zone {
+    flex: 1; /* Ekranı 4 eşit parçaya böl */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+
+.zone-space  { background: linear-gradient(to bottom, #020024, #090979); }
+.zone-sky    { background: linear-gradient(to bottom, #00d4ff, #90e0ef); }
+.zone-sea    { background: linear-gradient(to bottom, #0077b6, #023e8a); }
+.zone-forest { background: linear-gradient(to bottom, #2d6a4f, #1b4332); }
+
+/* Level Butonları */
+.level-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 4px solid white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 5;
+    background: #FFC107;
+    color: #333;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+
+.level-btn:hover { transform: scale(1.1); }
+
+/* Kilitli Buton */
+.level-btn.locked {
+    background: #555;
+    color: #888;
+    border-color: #888;
+    pointer-events: none;
+    box-shadow: none;
+}
+.level-btn.locked::after { content: '🔒'; font-size: 14px; display: block; }
+
+/* Kilit Açık Buton */
+.level-btn.unlocked {
+    background: #FFC107 !important;
+    color: #333 !important;
+    pointer-events: auto !important;
+    border-color: white !important;
+}
+
+/* Yol Çizgisi (Dikey Kesik Çizgi) */
+.path-line {
+    position: absolute;
+    top: -50%; /* Bir üstteki katmana uzanması için */
+    height: 100%;
+    width: 0;
+    border-left: 4px dashed rgba(255,255,255,0.6);
+    z-index: 1;
+}
+
+/* Bölge İsimleri */
+.zone-label {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    color: rgba(255,255,255,0.5);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Süslemeler (CSS ile Basit Çizimler) */
+.star { position: absolute; background: white; width: 3px; height: 3px; border-radius: 50%; opacity: 0.8; }
+.star-1 { top: 20%; left: 20%; }
+.star-2 { top: 60%; right: 30%; }
+
+.cloud {
+    position: absolute; width: 60px; height: 20px; background: white; border-radius: 20px; opacity: 0.7;
+    top: 30%; left: 10%;
+}
+
+.fish {
+    position: absolute; font-size: 24px; content: '🐟'; left: 20%;
+}
+.fish::after { content: '🐟'; }
+
+.tree {
+    position: absolute; font-size: 30px; left: 15%; bottom: 20px;
+}
+.tree::after { content: '🌲'; }
+
+/* --- OYUN EKRANI --- */
+#map { height: 100vh; width: 100%; z-index: 1; }
+
+#ui-overlay {
+    position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 90%; max-width: 400px;
+    pointer-events: none;
+}
+
+#timer {
+    background: #ff4444; color: white; padding: 10px 20px;
+    border-radius: 20px; font-weight: bold; font-size: 1.2rem;
+    display: inline-block; margin-bottom: 15px; pointer-events: auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+#question-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px; border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    text-align: center; pointer-events: auto;
+}
+
+#question-image {
+    max-width: 100%; max-height: 200px;
+    border-radius: 8px; margin-bottom: 15px;
+    border: 2px solid #ddd;
+    object-fit: cover;
+}
+
+#options-container button {
+    display: block; width: 100%; padding: 12px; margin: 8px 0;
+    border: none; border-radius: 8px;
+    background-color: #2196F3; color: white;
+    cursor: pointer; font-size: 16px; font-weight: bold;
+    transition: 0.2s;
+}
+
+#options-container button:hover { background-color: #0d8bf2; transform: translateY(-2px); }
+
+/* LEVEL SONU MODAL */
+#level-end-screen {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85); z-index: 2000;
+    display: flex; justify-content: center; align-items: center;
+}
+
+.modal-content {
+    background: white; padding: 40px; border-radius: 20px; text-align: center; width: 300px;
+}
+.menu-return-btn {
+    background: #4CAF50; color: white; border: none; padding: 10px 20px;
+    border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 20px;
+}
