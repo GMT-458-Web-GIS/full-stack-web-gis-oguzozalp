@@ -1,0 +1,24 @@
+{
+  "name": "geogame",
+  "version": "1.0.0",
+  "description": "This project is developed for GMT458 Web GIS Assignment 2.\r The aim is to design a simple geographic quiz game that includes a temporal component and uses a mapping library inside a web environment.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GMT-458-Web-GIS/geogame-oguzozalp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/GMT-458-Web-GIS/geogame-oguzozalp/issues"
+  },
+  "homepage": "https://github.com/GMT-458-Web-GIS/geogame-oguzozalp#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

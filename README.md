@@ -1,139 +1,46 @@
-# GeoPath Quiz – Design Documentation
+# GeoGame - Full Stack Web GIS Project
 
-## 1. Aim
+## 1. Project Overview
+GeoGame is an interactive, map-based geography quiz application designed to test users' knowledge of world locations. The project integrates **Leaflet.js** for mapping and features a gamified progression system with increasing difficulty levels (Forest, Sea, Sky, Space).
 
-This project is developed for GMT458 Web GIS Assignment 2.
-The aim is to design a simple geographic quiz game that includes a temporal component and uses a mapping library inside a web environment.
+This project is developed as the final assignment for **GMT 458 - Web GIS**. It transitions a static frontend game into a complete **Full Stack Web Application**.
 
-The game structure is inspired by classic level-based games such as Candy Crush, but adapted to a geography-question format with multiple levels and a map background.
+## 2. Technical Architecture
+The project utilizes a modern web stack to ensure performance, scalability, and ease of management.
 
----
+* **Frontend:** HTML5, CSS3, JavaScript (Vanilla), Leaflet.js
+* **Backend:** Node.js, Express.js
+* **Database:** MongoDB (NoSQL) *[Planned]*
+* **Testing:** Artillery / JMeter *[Planned]*
 
-## 2. Game Concept
+## 3. Key Features & Implementation Plan
 
-### **Overview**
+### ✅ User Roles & Management
+The system will support three distinct user types:
+1.  **Admin:** Can add/edit/delete questions via the map interface.
+2.  **Player:** Can play the game and save scores.
+3.  **Guest:** Can play the demo version (Level 1 only).
 
-GeoPath Quiz is a 4-level geography quiz game.
-Each level contains **5 questions** with **4 multiple-choice options** displayed over a map interface.
-Players must answer at least **3 out of 5 questions correctly** to complete a level.
+### ✅ CRUD Operations (Spatial Data)
+An admin dashboard will allow users to:
+* **Create:** Add a new question pin by clicking on the map.
+* **Read:** View existing questions.
+* **Update:** Modify question text or coordinates.
+* **Delete:** Remove outdated questions.
 
-The main objective is to provide a fun, interactive way to test geographic knowledge while integrating a geo-component using Leaflet.
+### ✅ NoSQL Database Integration
+Data (questions, user scores) will be migrated from static JSON files to **MongoDB**. This demonstrates the handling of heterogeneous data structures in web-based systems.
 
----
+### ✅ API Development
+A RESTful API will be developed to serve spatial data:
+* `GET /api/questions`: Retrieve game questions.
+* `POST /api/questions`: Add new spatial content.
 
-## 3. Game Progression
-
-### **Level Structure**
-
-* Total of **4 levels**, visually represented on a map-style level screen.
-* Each level unlocks only after the previous one is successfully completed.
-* The user returns to the Level Map after each completed level.
-
-### **Per-Level Rules**
-
-* **5 questions** appear one by one.
-* Each question has **4 answer choices**.
-* The player must achieve **≥ 3 correct answers** to pass.
-* The user may make **maximum 2 mistakes** in a level.
-
-### **Time Component**
-
-* Each level must be completed within **60 seconds**.
-* If the time expires, the player fails the level.
-
----
-
-## 4. Geo Component
-
-* The quiz is displayed on top of a **Leaflet map**.
-* Map may remain static or pan/zoom slightly during transitions.
-* Geographical content of the questions is supported by having a map always visible in the background.
+## 4. Installation & Setup
+1.  Clone the repository.
+2.  Run `npm install` to install dependencies.
+3.  Start the server with `node server.js`.
+4.  Visit `http://localhost:3000`.
 
 ---
-
-## 5. Number of Questions
-
-* **5 questions per level**
-* **20 questions total**
-
-All questions will be stored in a structured JSON file.
-
----
-
-## 6. Lives / Mistakes
-
-* No global life system.
-* Mistakes are evaluated **per level**.
-* The user may answer **incorrectly up to 2 times** each level.
-* A third wrong answer ends the level.
-
----
-
-## 7. JS Libraries
-
-### **Primary Library**
-
-* **Leaflet.js**
-  Used to display an interactive map and satisfy the geo-component requirement.
-
-### **Additional Libraries (optional bonus)**
-
-* **D3.js** → for animated progress bar or timer animation
-* **Vanilla JS** for game logic and DOM events
-
----
-
-## 8. Level Map Design (Sketch Description)
-
-The Level Map visually resembles classic path-based games (e.g., Candy Crush):
-
-* A pastel-colored background (static image).
-* 4 round “level nodes” arranged along a curved path.
-
-  * Level 1 → unlocked
-  * Levels 2–4 → locked
-* When the user clicks on an unlocked node, the quiz for that level begins.
-* After successfully completing a level, the next level changes from locked to unlocked.
-
-*(Hand-drawn or simple digital sketches are included as required in the assignment.)*
-
----
-
-## 9. Quiz Screen Layout (Sketch Description)
-
-* Top: **Countdown timer (60 seconds)**
-* Center: **Question text**
-* Bottom: **4 answer buttons**
-* Background: **Leaflet map** (static or minimal movement)
-
----
-
-## 10. Level Completion Screen
-
-Displayed after each level:
-
-* “Congratulations! You passed Level X.”
-* Shows the number of correct answers (e.g., 4/5).
-* Button: “Return to Level Map”
-
----
-
-## 11. Data Source
-
-A structured JSON file containing all questions, answer choices, and correct answers.
-This approach supports clean separation of data and logic.
-
----
-
-## 12. Summary
-
-This design fulfills the requirements for:
-
-* Geo-component (Leaflet)
-* Time-based progression
-* Level-based gameplay
-* Frontend layout with sketches and explanation
-* Clear explanation of difficulty and progression
-* Stated JS libraries
-
-The implementation phase will convert this design into a full web application hosted on GitHub Pages.
+*Developed by Oguz Ozalp for GMT 458 Final Assignment.*
