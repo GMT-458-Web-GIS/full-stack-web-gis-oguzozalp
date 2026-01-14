@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoGame - Admin Paneli</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body { display: flex; height: 100vh; margin: 0; font-family: sans-serif; }
+        #sidebar { width: 400px; padding: 20px; background: #f4f4f4; overflow-y: auto; border-right: 2px solid #ccc; }
+        #map { flex: 1; }
+        
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input, select { width: 100%; padding: 8px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background: #28a745; color: white; border: none; cursor: pointer; font-size: 16px; }
+        button:hover { background: #218838; }
+        
+        .question-item { background: white; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        .del-btn { background: #dc3545; margin-top: 5px; font-size: 12px; padding: 5px; }
+        .del-btn:hover { background: #c82333; }
+        h2 { border-bottom: 2px solid #333; padding-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <div id="sidebar">
+        <h2>Yeni Soru Ekle</h2>
+        <form id="addQuestionForm">
+            <div class="form-group">
+                <label>Level Seç:</label>
+                <select id="level" required>
+                    <option value="1">Level 1 (Orman)</option>
+                    <option value="2">Level 2 (Deniz)</option>
+                    <option value="3">Level 3 (Gökyüzü)</option>
+                    <option value="4">Level 4 (Uzay)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Soru Metni:</label>
+                <input type="text" id="text" placeholder="Örn: Fransa'nın başkenti?" required>
+            </div>
+
+            <div class="form-group">
+                <label>Şıklar (Virgülle ayır):</label>
+                <input type="text" id="options" placeholder="Paris, Londra, Berlin, Roma" required>
+            </div>
+
+            <div class="form-group">
+                <label>Doğru Cevap:</label>
+                <input type="text" id="answer" placeholder="Paris" required>
+            </div>
+
+            <div class="form-group">
+                <label>Koordinatlar (Haritaya Tıkla):</label>
+                <div style="display: flex; gap: 5px;">
+                    <input type="number" id="lat" step="any" placeholder="Enlem" required readonly>
+                    <input type="number" id="lng" step="any" placeholder="Boylam" required readonly>
+                </div>
+            </div>
+
+            <button type="submit">Soru Ekle (+)</button>
+        </form>
+
+        <h2 style="margin-top: 30px;">Mevcut Sorular</h2>
+        <div id="questionsList">
+            </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
