@@ -1,46 +1,104 @@
-# GeoGame - Full Stack Web GIS Project
+# 🌍 GeoGame - Full Stack Web GIS Project
 
-## 1. Project Overview
-GeoGame is an interactive, map-based geography quiz application designed to test users' knowledge of world locations. The project integrates **Leaflet.js** for mapping and features a gamified progression system with increasing difficulty levels (Forest, Sea, Sky, Space).
+**GeoGame** is an interactive, web-based geography quiz application integrated with spatial data. The project is built using a **Node.js** backend, **MongoDB** database, and **Leaflet.js** for frontend mapping.
 
-This project is developed as the final assignment for **GMT 458 - Web GIS**. It transitions a static frontend game into a complete **Full Stack Web Application**.
-
-## 2. Technical Architecture
-The project utilizes a modern web stack to ensure performance, scalability, and ease of management.
-
-* **Frontend:** HTML5, CSS3, JavaScript (Vanilla), Leaflet.js
-* **Backend:** Node.js, Express.js
-* **Database:** MongoDB (NoSQL) *[Planned]*
-* **Testing:** Artillery / JMeter *[Planned]*
-
-## 3. Key Features & Implementation Plan
-
-### ✅ User Roles & Management
-The system will support three distinct user types:
-1.  **Admin:** Can add/edit/delete questions via the map interface.
-2.  **Player:** Can play the game and save scores.
-3.  **Guest:** Can play the demo version (Level 1 only).
-
-### ✅ CRUD Operations (Spatial Data)
-An admin dashboard will allow users to:
-* **Create:** Add a new question pin by clicking on the map.
-* **Read:** View existing questions.
-* **Update:** Modify question text or coordinates.
-* **Delete:** Remove outdated questions.
-
-### ✅ NoSQL Database Integration
-Data (questions, user scores) will be migrated from static JSON files to **MongoDB**. This demonstrates the handling of heterogeneous data structures in web-based systems.
-
-### ✅ API Development
-A RESTful API will be developed to serve spatial data:
-* `GET /api/questions`: Retrieve game questions.
-* `POST /api/questions`: Add new spatial content.
-
-## 4. Installation & Setup
-1.  Clone the repository.
-2.  Run `npm install` to install dependencies.
-3.  Start the server with `node server.js`.
-4.  Visit `http://localhost:3000`.
+This project was developed over a **5-day sprint**, covering Full-Stack development principles including API design, Database management, Authentication, and Spatial CRUD operations.
 
 ---
-*Developed by Oguz Ozalp for GMT 458 Final Assignment.*
+
+## 🚀 Development Journey (5-Day Log)
+
+This project was built step-by-step to meet all technical requirements:
+
+### **Day 1: Project Initialization & Backend Structure**
+* **Goal:** Set up the Node.js environment and serve the frontend.
+* **Actions:**
+    * Initialized the project with `npm init`.
+    * Set up **Express.js** server structure.
+    * Integrated **Leaflet.js** for the map interface.
+    * Created the basic game logic using static JSON data.
+
+### **Day 2: Database Integration (MongoDB) & API**
+* **Goal:** Migrate from static files to a cloud database.
+* **Actions:**
+    * Connected the application to **MongoDB Atlas (Cloud)** using Mongoose.
+    * Designed the **Question Schema** (storing text, coordinates, options).
+    * Developed RESTful API Endpoints:
+        * `GET /api/questions`: Fetch spatial data.
+        * `GET /seed`: Populate database with initial data.
+
+### **Day 3: Admin Panel & CRUD Operations**
+* **Goal:** Enable dynamic management of spatial data.
+* **Actions:**
+    * Built a dedicated **Admin Dashboard**.
+    * Implemented **Map-Click Interaction**: Admins can click on the map to get coordinates automatically.
+    * Added **POST /api/questions**: Create new geographic questions.
+    * Added **DELETE /api/questions/:id**: Remove questions from the database.
+
+### **Day 4: Authentication & User Roles**
+* **Goal:** Secure the application and manage user types.
+* **Actions:**
+    * Designed **User Schema** (Username, Password, Role).
+    * Implemented **Login & Register** system (`POST /api/login`, `POST /api/register`).
+    * Created **Role-Based Access Control (RBAC)**:
+        * **Admin:** Can access `/admin` and modify data.
+        * **Player:** Can only access `/game`.
+        * **Guest:** Restricted access.
+
+### **Day 5: API Documentation (Swagger/OpenAPI)**
+* **Goal:** Document the backend infrastructure professionally.
+* **Actions:**
+    * Integrated **Swagger UI** (`swagger-ui-express`).
+    * Documented all API endpoints (GET, POST, DELETE) with request/response examples.
+    * Finalized code cleanup and performed system tests.
+
+---
+
+## 🛠️ Technologies Used
+
+* **Backend:** Node.js, Express.js
+* **Database:** MongoDB Atlas (NoSQL)
+* **Frontend:** HTML5, CSS3, JavaScript (Vanilla), Leaflet.js
+* **Documentation:** Swagger UI
+* **Tools:** Git, Postman
+
+---
+
+## 📂 API Documentation
+
+The API is fully documented using Swagger.
+Once the server is running, you can access the documentation at:
+
+👉 **http://localhost:3000/api-docs**
+
+---
+
+## ⚙️ How to Run
+
+1.  **Clone the Repository**
+    ```bash
+    git clone [https://github.com/GMT-458-Web-GIS/full-stack-web-gis-oguzozalp.git](https://github.com/GMT-458-Web-GIS/full-stack-web-gis-oguzozalp.git)
+    cd full-stack-web-gis-oguzozalp
+    ```
+
+2.  **Install Dependencies**
+    ```bash
+    npm install
+    ```
+
+3.  **Start the Server**
+    ```bash
+    node server.js
+    ```
+
+4.  **Access the Application**
+    * **Game:** `http://localhost:3000`
+    * **Admin Panel:** Login as admin to access.
+
+---
+
+## 👤 Author
+
+**Oğuz Baran Özalp**
+* Hacettepe University - Department of Geomatics Engineering
+* Course: GMT 458 - Web GIS Design
