@@ -1,3 +1,13 @@
+// --- KULLANICI KONTROLÜ (EN ÜSTE EKLE) ---
+const currentUser = JSON.parse(localStorage.getItem('user'));
+
+if (!currentUser || currentUser.role !== 'admin') {
+    alert("Buraya giriş yetkiniz yok! Ana sayfaya yönlendiriliyorsunuz.");
+    window.location.href = '/'; // Login sayfasına at
+}
+// -----------------------------------------
+
+// ... (Buradan sonra eski initMap ve diğer kodların devam etsin) ...
 let map;
 let marker;
 
